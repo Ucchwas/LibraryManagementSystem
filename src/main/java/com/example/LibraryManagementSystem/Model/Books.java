@@ -9,11 +9,12 @@ public class Books {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long bookId;
 
-    @Column
+    @JoinColumn
     public String bookType;
 
-    @OneToOne
-    private Feedback feedback;
+//    @OneToOne
+//    private LibraryBooks listOfBooks;
+
 
     public Books() {
     }

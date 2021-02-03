@@ -18,8 +18,6 @@ public class User {
     @Column
     private String reputation;
 
-    @OneToOne
-    private Books books;
 
     public User(long userId,String userType,int cardNo,String reputation) {
         this.userId = userId;

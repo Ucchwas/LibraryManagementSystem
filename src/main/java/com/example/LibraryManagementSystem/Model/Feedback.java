@@ -7,15 +7,32 @@ import javax.persistence.*;
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    public long userId;
+
+    @Column
     public long bookId;
 
     @Column
-    private String feedback;
+    private Long rating;
 
+//    @ManyToOne
+//    private Books books;
+//
+//    @ManyToOne
+//    private User user;
 
-    public Feedback(long bookId,String feedback) {
+    public Feedback(long userId,long bookId,Long rating) {
+        this.userId = userId;
         this.bookId = bookId;
-        this.feedback = feedback;
+        this.rating = rating;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getBookId() {
@@ -26,12 +43,12 @@ public class Feedback {
         this.bookId = bookId;
     }
 
-    public String getFeedback() {
-        return feedback;
+    public Long getRating() {
+        return rating;
     }
 
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
+    public void setRating(Long rating) {
+        this.rating = rating;
     }
 
     public Feedback() {

@@ -37,8 +37,6 @@ public class LibraryService {
         Library library = libraryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Library Not Found"));
         library.setId(libraryDetails.getId());
         library.setName(libraryDetails.getName());
-        library.setBookId(libraryDetails.getBookId());
-        library.setUserId(libraryDetails.getUserId());
         libraryRepository.save(library);
         return ResponseEntity.ok().body(library);
     }

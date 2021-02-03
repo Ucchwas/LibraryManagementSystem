@@ -35,8 +35,9 @@ public class FeedbackService {
         this.feedbackDetails = feedbackDetails;
         long id = this.feedbackDetails.getBookId();
         Feedback feedback = feedbackRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book Not Found"));
+        feedback.setUserId(feedbackDetails.getBookId());
         feedback.setBookId(feedbackDetails.getBookId());
-        feedback.setFeedback(feedbackDetails.getFeedback());
+        feedback.setRating(feedbackDetails.getRating());
         feedbackRepository.save(feedback);
         return ResponseEntity.ok().body(feedback);
     }

@@ -13,18 +13,10 @@ public class Library {
     @Column
     private String name;
 
-    @Column
-    public long bookId;
 
-    @Column
-    public long userId;
-
-
-    public Library(long id,String name,long bookId,long userId){
+    public Library(long id,String name){
         this.id = id;
         this.name = name;
-        this.bookId = bookId;
-        this.userId = userId;
     }
 
     public long getId() {
@@ -41,22 +33,6 @@ public class Library {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
     }
 
     public Library() {
