@@ -6,38 +6,42 @@ import javax.persistence.*;
 @Table
 public class Books {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long bookId;
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "books_id_seq")
+    @SequenceGenerator(name = "books_id_seq", sequenceName = "books_id_seq", allocationSize = 1)
+    public long book_id;
 
-    @JoinColumn
-    public String bookType;
+    @Column(name = "book_type")
+    public String book_type;
 
-//    @OneToOne
-//    private LibraryBooks listOfBooks;
+    @OneToOne
+    @JoinColumn(name = "librarybooks_id")
+    private LibraryBooks listOfBooks;
 
 
     public Books() {
+        super();
     }
 
     public long getBookId() {
-        return bookId;
+        return book_id;
     }
 
     public void setBookId(long bookId) {
-        this.bookId = bookId;
+        this.book_id = bookId;
     }
 
     public String getBookType() {
-        return bookType;
+        return book_type;
     }
 
     public void setBookType(String bookType) {
-        this.bookType = bookType;
+        this.book_type = bookType;
     }
 
     public Books(long bookId, String bookType) {
-        this.bookId = bookId;
-        this.bookType = bookType;
+        this.book_id = bookId;
+        this.book_type = bookType;
     }
 
 }

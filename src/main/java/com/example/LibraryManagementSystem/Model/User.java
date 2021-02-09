@@ -3,54 +3,57 @@ package com.example.LibraryManagementSystem.Model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name="users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
+    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
+    private long user_id;
 
     @Column
-    private String userType;
+    private String user_type;
 
     @Column
-    private int cardNo;
+    private int card_no;
 
     @Column
     private String reputation;
 
 
     public User(long userId,String userType,int cardNo,String reputation) {
-        this.userId = userId;
-        this.userType = userType;
-        this.cardNo = cardNo;
+        this.user_id = userId;
+        this.user_type = userType;
+        this.card_no = cardNo;
         this.reputation = reputation;
     }
 
     public User() {
+        super();
     }
 
+
     public long getUserId() {
-        return userId;
+        return user_id;
     }
 
     public void setUserId(long userId) {
-        this.userId = userId;
+        this.user_id = userId;
     }
 
     public String getUserType() {
-        return userType;
+        return user_type;
     }
 
     public void setUserType(String userType) {
-        this.userType = userType;
+        this.user_type = userType;
     }
 
     public int getCardNo() {
-        return cardNo;
+        return card_no;
     }
 
     public void setCardNo(int cardNo) {
-        this.cardNo = cardNo;
+        this.card_no = cardNo;
     }
 
     public String getReputation() {

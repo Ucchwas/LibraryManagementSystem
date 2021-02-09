@@ -7,7 +7,8 @@ import java.util.List;
 @Table
 public class Library {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "library_id_seq")
+    @SequenceGenerator(name = "library_id_seq", sequenceName = "library_id_seq", allocationSize = 1)
     private long id;
 
     @Column
@@ -36,5 +37,6 @@ public class Library {
     }
 
     public Library() {
+        super();
     }
 }

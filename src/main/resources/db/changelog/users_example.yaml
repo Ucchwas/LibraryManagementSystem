@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9
+      author: Utsha
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_id_pkey
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_type
+                  type: VARCHAR(250)
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: card_no
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: reputation
+                  type: VARCHAR(250)
+            tableName: users

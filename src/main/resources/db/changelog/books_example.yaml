@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 109
+      author: Utsha
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: book_id_pkey
+                  name: book_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: book_type
+                  type: VARCHAR(250)
+            tableName: books
