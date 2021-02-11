@@ -31,7 +31,7 @@ class BooksTests {
 
     @Test
     void contextLoads() {
-        when(booksRepository.findAll()).thenReturn(Stream.of(new Books(1,"ME"),new Books(2,"CSE")).collect(Collectors.toList()));
+        when(booksRepository.findAll()).thenReturn(Stream.of(new Books(1,"ME"), new Books(2,"CSE")).collect(Collectors.toList()));
 
         Assert.assertEquals(2,booksService.findAllBooks().size());
     }

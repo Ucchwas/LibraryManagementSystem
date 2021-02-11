@@ -35,10 +35,10 @@ public class BooksServiceImpl implements BooksService {
 
     public Books putBooks(@RequestBody Books booksDetails) throws ResourceNotFoundException {
         this.booksDetails = booksDetails;
-        long id = this.booksDetails.getBookId();
+        long id = this.booksDetails.getBook_id();
         Books books = booksRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Books Not Found"));
-        books.setBookId(booksDetails.getBookId());
-        books.setBookType(booksDetails.getBookType());
+        books.setBook_id(booksDetails.getBook_id());
+        books.setBook_type(booksDetails.getBook_type());
         booksRepository.save(books);
         return books;
     }

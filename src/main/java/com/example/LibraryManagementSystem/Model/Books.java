@@ -1,7 +1,16 @@
 package com.example.LibraryManagementSystem.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table
 public class Books {
@@ -18,40 +27,8 @@ public class Books {
     @JoinColumn(name = "librarybooks_id")
     private LibraryBooks listOfBooks;
 
-
-    public Books() {
-        super();
+    public Books(long book_id, String book_type) {
+        this.book_id  = book_id;
+        this.book_type = book_type;
     }
-
-    public long getBookId() {
-        return book_id;
-    }
-
-    public void setBookId(long bookId) {
-        this.book_id = bookId;
-    }
-
-    public String getBookType() {
-        return book_type;
-    }
-
-    public void setBookType(String bookType) {
-        this.book_type = bookType;
-    }
-
-    @Override
-    public String toString() {
-        return "Books{" +
-                "book_id=" + book_id +
-                ", book_type='" + book_type + '\'' +
-                ", listOfBooks=" + listOfBooks +
-                '}';
-    }
-
-    public Books(long bookId, String bookType) {
-        this.book_id = bookId;
-        this.book_type = bookType;
-    }
-
-
 }

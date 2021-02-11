@@ -1,7 +1,16 @@
 package com.example.LibraryManagementSystem.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table
 public class Feedback {
@@ -29,44 +38,5 @@ public class Feedback {
         this.user_id = userId;
         this.book_id = bookId;
         this.rating = rating;
-    }
-
-    public long getUserId() {
-        return user_id;
-    }
-
-    public void setUserId(long userId) {
-        this.user_id = userId;
-    }
-
-    @Override
-    public String toString() {
-        return "Feedback{" +
-                "user_id=" + user_id +
-                ", book_id=" + book_id +
-                ", rating=" + rating +
-                ", user=" + user +
-                ", books=" + books +
-                '}';
-    }
-
-    public long getBookId() {
-        return book_id;
-    }
-
-    public void setBookId(long bookId) {
-        this.book_id = bookId;
-    }
-
-    public Long getRating() {
-        return rating;
-    }
-
-    public void setRating(Long rating) {
-        this.rating = rating;
-    }
-
-    public Feedback() {
-        super();
     }
 }

@@ -35,10 +35,10 @@ public class FeedbackServiceImpl implements FeedbackService{
 
     public Feedback putFeedback(@RequestBody Feedback feedbackDetails) throws ResourceNotFoundException {
         this.feedbackDetails = feedbackDetails;
-        long id = this.feedbackDetails.getBookId();
+        long id = this.feedbackDetails.getBook_id();
         Feedback feedback = feedbackRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book Not Found"));
-        feedback.setUserId(feedbackDetails.getBookId());
-        feedback.setBookId(feedbackDetails.getBookId());
+        feedback.setUser_id(feedbackDetails.getUser_id());
+        feedback.setBook_id(feedbackDetails.getBook_id());
         feedback.setRating(feedbackDetails.getRating());
         feedbackRepository.save(feedback);
         return feedback;

@@ -24,7 +24,7 @@ public class BooksDTO {
     }
 
     public BooksDTO(Books books) {
-        this.book_id = books.getBookId();
-        this.book_type = books.getBookType();
+        this.book_id = books.getBook_id();
+        this.book_type = books.getBook_type();
     }
 }

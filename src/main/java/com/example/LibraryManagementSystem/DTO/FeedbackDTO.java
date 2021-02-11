@@ -18,8 +18,8 @@ public class FeedbackDTO {
     }
 
     public FeedbackDTO(Feedback feedback) {
-        this.user_id = feedback.getUserId();
-        this.book_id = feedback.getBookId();
+        this.user_id = feedback.getUser_id();
+        this.book_id = feedback.getBook_id();
         this.rating = feedback.getRating();
     }
 
