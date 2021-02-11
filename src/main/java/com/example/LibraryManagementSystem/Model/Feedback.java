@@ -39,6 +39,17 @@ public class Feedback {
         this.user_id = userId;
     }
 
+    @Override
+    public String toString() {
+        return "Feedback{" +
+                "user_id=" + user_id +
+                ", book_id=" + book_id +
+                ", rating=" + rating +
+                ", user=" + user +
+                ", books=" + books +
+                '}';
+    }
+
     public long getBookId() {
         return book_id;
     }

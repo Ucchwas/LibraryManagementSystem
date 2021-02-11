@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private User userDetails;
 
     public List<User>findAllUser(){
-        List<User>users= userRepository.findAll();
+        List<User> users= userRepository.findAll();
         System.out.println("New User: "+users.toString());
         return userRepository.findAll();
     }

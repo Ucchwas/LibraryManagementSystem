@@ -2,6 +2,7 @@ package com.example.LibraryManagementSystem.Service;
 
 import com.example.LibraryManagementSystem.Exception.ResourceNotFoundException;
 import com.example.LibraryManagementSystem.Model.Books;
+import com.example.LibraryManagementSystem.Model.User;
 import com.example.LibraryManagementSystem.Repository.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,8 @@ public class BooksServiceImpl implements BooksService {
     private Books booksDetails;
 
     public List<Books> findAllBooks(){
+        List<Books> books= booksRepository.findAll();
+        System.out.println("New Books: "+ books.toString());
         return booksRepository.findAll();
     }
 

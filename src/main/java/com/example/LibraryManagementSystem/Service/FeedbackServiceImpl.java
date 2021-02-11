@@ -2,6 +2,7 @@ package com.example.LibraryManagementSystem.Service;
 
 import com.example.LibraryManagementSystem.Exception.ResourceNotFoundException;
 import com.example.LibraryManagementSystem.Model.Feedback;
+import com.example.LibraryManagementSystem.Model.User;
 import com.example.LibraryManagementSystem.Repository.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,8 @@ public class FeedbackServiceImpl implements FeedbackService{
     private Feedback feedbackDetails;
 
     public List<Feedback> findAllFeedback(){
+        List<Feedback> feedbacks = feedbackRepository.findAll();
+        System.out.println("New User: "+ feedbacks.toString());
         return feedbackRepository.findAll();
     }
 

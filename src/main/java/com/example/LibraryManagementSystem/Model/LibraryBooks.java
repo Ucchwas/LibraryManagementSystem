@@ -18,6 +18,16 @@ public class LibraryBooks {
     @Column
     private long library_id;
 
+    @Override
+    public String toString() {
+        return "LibraryBooks{" +
+                "id=" + id +
+                ", book_id=" + book_id +
+                ", library_id=" + library_id +
+                ", library=" + library +
+                '}';
+    }
+
     @ManyToOne
     @JoinColumn(name = "library_id", nullable = false , insertable=false , updatable=false)
     private Library library;

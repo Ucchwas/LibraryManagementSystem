@@ -15,7 +15,15 @@ public class Library {
     private String name;
 
 
-    public Library(long id,String name){
+    @Override
+    public String toString() {
+        return "Library{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public Library(long id, String name){
         this.id = id;
         this.name = name;
     }

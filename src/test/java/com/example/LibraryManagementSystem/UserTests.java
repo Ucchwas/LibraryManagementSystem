@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class LibraryManagementSystemApplicationTests {
+class UserTests {
 
 	@Autowired
 	private UserService userService;
