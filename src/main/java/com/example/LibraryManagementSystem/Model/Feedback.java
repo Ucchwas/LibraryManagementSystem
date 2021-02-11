@@ -16,13 +16,14 @@ public class Feedback {
     @Column
     private Long rating;
 
-    @ManyToOne
-    @JoinColumn(name = "books_id", nullable = false , insertable=false , updatable=false)
-    private Books books;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false , insertable=false , updatable=false)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "books_id", nullable = false , insertable=false , updatable=false)
+    private Books books;
 
     public Feedback(long userId,long bookId,Long rating) {
         this.user_id = userId;

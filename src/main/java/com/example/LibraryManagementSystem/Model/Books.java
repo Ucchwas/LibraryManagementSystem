@@ -39,9 +39,19 @@ public class Books {
         this.book_type = bookType;
     }
 
+    @Override
+    public String toString() {
+        return "Books{" +
+                "book_id=" + book_id +
+                ", book_type='" + book_type + '\'' +
+                ", listOfBooks=" + listOfBooks +
+                '}';
+    }
+
     public Books(long bookId, String bookType) {
         this.book_id = bookId;
         this.book_type = bookType;
     }
+
 
 }

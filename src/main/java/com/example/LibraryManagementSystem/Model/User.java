@@ -44,6 +44,16 @@ public class User {
         return user_type;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", user_type='" + user_type + '\'' +
+                ", card_no=" + card_no +
+                ", reputation='" + reputation + '\'' +
+                '}';
+    }
+
     public void setUserType(String userType) {
         this.user_type = userType;
     }

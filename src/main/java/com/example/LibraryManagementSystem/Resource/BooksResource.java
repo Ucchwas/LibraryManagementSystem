@@ -1,15 +1,18 @@
 package com.example.LibraryManagementSystem.Resource;
 
+import com.example.LibraryManagementSystem.DTO.BooksDTO;
 import com.example.LibraryManagementSystem.Exception.ResourceNotFoundException;
 import com.example.LibraryManagementSystem.Model.Books;
-import com.example.LibraryManagementSystem.Model.User;
 import com.example.LibraryManagementSystem.Service.BooksService;
-import com.example.LibraryManagementSystem.Service.UserService;
+import org.modelmapper.ModelMapper;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @RestController
 public class BooksResource {
@@ -17,28 +20,30 @@ public class BooksResource {
     private BooksService booksService;
 
     @GetMapping("/books")
-    public List<Books> getAllBooks(){
-        return booksService.findAllBooks();
-    }
+    public List<BooksDTO> getAllBooks(){
 
-    @GetMapping("/books/{id}")
-    public ResponseEntity<Books> getBooksId(@PathVariable(value = "id")  long id){
-        return booksService.getBookId(id);
+        return booksService.findAllBooks().stream().map(BooksDTO::new).collect(Collectors.toList());
     }
+//
+//    @GetMapping("/books/{id}")
+//    public ResponseEntity<Books> getBooksId(@PathVariable(value = "id")  long id){
+//        return booksService.getBookId(id);
+//    }
 
     @PostMapping("/books")
-    public Books createBooks(@RequestBody Books books){
-        return booksService.saveBooks(books);
+    public BooksDTO createBooks(@RequestBody Books books){
+        //BooksDTO booksDTO = modelMapper.map(books , BooksDTO.class);
+        return new BooksDTO(booksService.saveBooks(books));
     }
 
-    @PostMapping("/books/{id}")
-    public ResponseEntity<Books> getBooksbyId(@PathVariable(value = "id")  long id) throws ResourceNotFoundException {
-        return booksService.getBookId(id);
-    }
+//    @PostMapping("/books/{id}")
+//    public ResponseEntity<Books> getBooksbyId(@PathVariable(value = "id")  long id) throws ResourceNotFoundException {
+//        return booksService.getBookId(id);
+//    }
 
     @PutMapping("/books")
-    public ResponseEntity<Books> updateUser(@RequestBody Books booksDetails) throws ResourceNotFoundException {
-        return booksService.putBooks(booksDetails);
+    public BooksDTO updateUser(@RequestBody Books books){
+        return new BooksDTO(booksService.putBooks(books));
     }
 
     @DeleteMapping("/books/{id}")

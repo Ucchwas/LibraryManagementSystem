@@ -1,15 +1,17 @@
 package com.example.LibraryManagementSystem.Resource;
 
+import com.example.LibraryManagementSystem.DTO.BooksDTO;
+import com.example.LibraryManagementSystem.DTO.FeedbackDTO;
 import com.example.LibraryManagementSystem.Exception.ResourceNotFoundException;
 import com.example.LibraryManagementSystem.Model.Feedback;
-import com.example.LibraryManagementSystem.Model.User;
 import com.example.LibraryManagementSystem.Service.FeedbackService;
-import com.example.LibraryManagementSystem.Service.UserService;
+import com.example.LibraryManagementSystem.Service.FeedbackServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class FeedbackResoursce {
@@ -17,32 +19,32 @@ public class FeedbackResoursce {
     private FeedbackService feedbackService;
 
     @GetMapping("/feedback")
-    public List<Feedback> getAllUser(){
-        return feedbackService.findAllFeedback();
+    public List<FeedbackDTO> getAllUser(){
+        return feedbackService.findAllFeedback().stream().map(FeedbackDTO::new).collect(Collectors.toList());
     }
 
-    @GetMapping("/feedback/{id}")
-    public ResponseEntity<Feedback> getFeedbackId(@PathVariable(value = "id")  long id){
-        return feedbackService.getFeedbackBookId(id);
-    }
+//    @GetMapping("/feedback/{id}")
+//    public ResponseEntity<Feedback> getFeedbackId(@PathVariable(value = "id")  long id){
+//        return feedbackService.getFeedbackBookId(id);
+//    }
 
     @PostMapping("/feedback")
-    public Feedback createFeedback(@RequestBody Feedback feedback){
-        return feedbackService.saveFeedback(feedback);
+    public FeedbackDTO createFeedback(@RequestBody Feedback feedback){
+        return new FeedbackDTO(feedbackService.saveFeedback(feedback));
     }
 
-    @PostMapping("/feedback/{id}")
-    public ResponseEntity<Feedback> getFeedbackbyId(@PathVariable(value = "id")  long id) throws ResourceNotFoundException {
-        return feedbackService.getFeedbackBookId(id);
-    }
+//    @PostMapping("/feedback/{id}")
+//    public ResponseEntity<Feedback> getFeedbackbyId(@PathVariable(value = "id")  long id) throws ResourceNotFoundException {
+//        return feedbackService.getFeedbackBookId(id);
+//    }
 
     @PutMapping("/feedback")
-    public ResponseEntity<Feedback> updateUser(@RequestBody Feedback feedbackDetails) throws ResourceNotFoundException {
-        return feedbackService.putFeedback(feedbackDetails);
+    public FeedbackDTO updateUser(@RequestBody Feedback feedbackDetails){
+        return new FeedbackDTO(feedbackService.putFeedback(feedbackDetails));
     }
 
     @DeleteMapping("/feedback/{id}")
-    public ResponseEntity<Object> deleteFeedback(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
+    public ResponseEntity<Object> deleteFeedback(@PathVariable(value = "id") long id){
         return feedbackService.delFeedback(id);
     }
 }
